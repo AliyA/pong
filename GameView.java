@@ -111,8 +111,8 @@ public class GameView extends JComponent implements MouseListener, KeyListener, 
         g.fillRect(0,0,size.width,size.height);
 
         // Draw the wall
-        g.setColor(Color.WHITE);
-        g.fillRect(size.width / 2 - 5, 0, 10, size.height);
+//        g.setColor(Color.WHITE);
+//        g.fillRect(size.width / 2 - 5, 0, 10, size.height);
 
         // Draw the ball
         ballView.paint(g);
