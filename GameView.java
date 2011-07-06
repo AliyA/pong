@@ -78,10 +78,12 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	@Override
 	public void keyPressed(KeyEvent event) {
 		switch (event.getKeyCode()) {
-		case KeyEvent.VK_W:
+		// KeyEvent.VK_W
+		case 87:
 			game.setMoveplayer(-4);
 			break;
-		case KeyEvent.VK_S:
+		// KeyEvent.VK_S
+		case 83:
 			game.setMoveplayer(4);
 			break;
 		// KeyEvent.VK_UP

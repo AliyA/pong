@@ -1,8 +1,4 @@
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.Rectangle;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * A Game is a rectangular area containing a ball and two paddles (a Player and
@@ -61,8 +57,6 @@ public class Game {
 		}
 	}
 
-	AudioClip myMusic;
-
 	/**
 	 * The size of the game
 	 */
@@ -106,11 +100,6 @@ public class Game {
 	 * Creates a new Game.
 	 */
 	public Game() {
-		try {
-			myMusic = Applet.newAudioClip(new URL("file:badgerbadger.wav"));
-		} catch (MalformedURLException e) {
-		}
-
 		bounds = new Rectangle(SIZE, SIZE);
 		state = State.IDLE;
 
@@ -192,7 +181,6 @@ public class Game {
 				|| ((area.x == comp.getArea().x + comp.getArea().width)
 						&& (area.y >= comp.getArea().y) && (area.y + Ball.SIZE < comp
 						.getArea().y + comp.getArea().height))) {
-			myMusic.play();
 			return true;
 		}
 
