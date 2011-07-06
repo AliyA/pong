@@ -98,4 +98,13 @@ public class Ball {
 
 		directionX = directionY = 1;
 	}
+	
+	public boolean isMovingLeft () {
+		if (directionX > 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 }

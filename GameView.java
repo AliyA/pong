@@ -102,6 +102,20 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	 */
 	@Override
 	public void keyReleased(KeyEvent event) {
+		if (event.getKeyCode() == 32) {
+			synchronized (game) {
+				if (game.getGameState() == Game.State.IDLE
+						|| game.getGameState() == Game.State.NEW_LEVEL) {
+					game.start();
+					new AnimationThread().start();
+				} else if (game.getGameState() == Game.State.WON) {
+					game.newlevel();
+				} else if (game.getGameState() == Game.State.LOST) {
+					game.idle();
+				}
+			}
+
+		}
 	}
 
 	@Override

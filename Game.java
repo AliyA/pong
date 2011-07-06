@@ -54,6 +54,7 @@ public class Game {
 		public static final State NEW_LEVEL = new State();
 
 		private State() {
+			// add sound
 		}
 	}
 
@@ -61,6 +62,8 @@ public class Game {
 	 * The size of the game
 	 */
 	private final int SIZE = 500;
+	private final int SizeX = this.SIZE;
+	private final int SizeY = this.SIZE;
 
 	/**
 	 * The level the player is on
@@ -100,13 +103,13 @@ public class Game {
 	 * Creates a new Game.
 	 */
 	public Game() {
-		bounds = new Rectangle(SIZE, SIZE);
-		state = State.IDLE;
+		bounds = new Rectangle(SizeX, SizeY);
+		state = State.IDLE; 
+		
+		ball = new Ball(this, 30, SizeY / 2 - (Ball.SIZE / 2));
 
-		ball = new Ball(this, 30, SIZE / 2 - (Ball.SIZE / 2));
-
-		comp = new Paddle(this, 20, SIZE / 2 - 20);
-		player = new Paddle(this, SIZE - 20, SIZE / 2 - 20);
+		comp = new Paddle(this, 20, SizeY / 2 - 20);
+		player = new Paddle(this, SizeX - 20, SizeY / 2 - 20);
 
 		moveplayer = 0;
 	}
@@ -273,10 +276,13 @@ public class Game {
 		}
 
 		// Move the computer player
-		if (ball.getArea().y > comp.getArea().y + 15) {
-			comp.makeMove(1);
-		} else if (ball.getArea().y < comp.getArea().y + 15) {
-			comp.makeMove(-1);
+		if (( ball.isMovingLeft() && ball.getArea().x < SizeX / 2 + getLevel() * SizeX / 10 ) ||
+				( !ball.isMovingLeft() && ball.getArea().x > SizeX / + getLevel() * SizeX / 10 )) {
+			if (ball.getArea().y > comp.getArea().y + 15) {
+				comp.makeMove(1);
+			} else if (ball.getArea().y < comp.getArea().y + 15) {
+				comp.makeMove(-1);
+			}
 		}
 
 		// Move the ball
