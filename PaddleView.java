@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 /**
  * Die Paddleview Klasse visualisiert den Spielebalken.
  * 
- * @author
+ * @Olivier Favre
  */
 public class PaddleView {
 	/**
