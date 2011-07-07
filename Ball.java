@@ -18,7 +18,7 @@ public class Ball {
 	
 
 	/**
-	 * Diese Variable wird temporär für das Berechnen der nächsten Position des Balles genutzt.
+	 * Diese Variable wird temporär für das Berechnen der nächsten  Position des Balles genutzt.
 	 */
 	private Rectangle nextArea;
 
