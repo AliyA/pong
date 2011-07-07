@@ -1,4 +1,5 @@
 import java.awt.Rectangle;
+import java.util.Random;
 
 /**
  * A Game is a rectangular area containing a ball and two paddles (a Player and
@@ -33,7 +34,7 @@ public class Game {
 		public void run() {
 			while (getGameState() == Game.State.PLAYING) {
 				try {
-					Thread.sleep(5);
+					Thread.sleep(2 + (11 - level) / 2);
 				} catch (Exception e) {
 				}
 				tick();
@@ -63,7 +64,7 @@ public class Game {
 	 */
 	private final int SIZE = 500;
 	private final int SizeX = this.SIZE;
-	private final int SizeY = this.SIZE;
+	private final int SizeY = 2 * this.SIZE / 3;
 
 	/**
 	 * The level the player is on
@@ -84,6 +85,7 @@ public class Game {
 	 * The ball
 	 */
 	private Ball ball;
+	private int ballY;
 
 	/**
 	 * The player and comp in the game.
@@ -98,18 +100,23 @@ public class Game {
 	 * Store values of the movement of the player / comp
 	 */
 	private int moveplayer;
+	
+	private Random random;
 
 	/**
 	 * Creates a new Game.
 	 */
 	public Game() {
+		random = new Random();
+		
 		bounds = new Rectangle(SizeX, SizeY);
 		state = State.IDLE; 
 		
-		ball = new Ball(this, 30, SizeY / 2 - (Ball.SIZE / 2));
+		ballY = (SizeY) / 3 + random.nextInt(SizeY/3);
+		ball = new Ball(this, 30, ballY);
 
-		comp = new Paddle(this, 20, SizeY / 2 - 20);
-		player = new Paddle(this, SizeX - 20, SizeY / 2 - 20);
+		comp = new Paddle(this, 20, SizeY / 2);
+		player = new Paddle(this, SizeX - 20, SizeY / 2);
 
 		moveplayer = 0;
 	}
@@ -250,10 +257,11 @@ public class Game {
 	 * tick() method in a loop.
 	 */
 	public synchronized void start() {
-		ball.restart(30, SIZE / 2 - (Ball.SIZE / 2));
+		ball.restart(40, ballY, random.nextInt(2));
+		this.ballY =  (SizeY - Ball.SIZE) / 3 + random.nextInt(SizeY/3  - Ball.SIZE);
 
-		comp.setPosition(20, SIZE / 2 - 20);
-		player.setPosition(SIZE - 20, SIZE / 2 - 20);
+		comp.setPosition(20, SizeY / 2);
+		player.setPosition(SizeX - 20, SizeY / 2);
 
 		moveplayer = 0;
 
@@ -275,12 +283,12 @@ public class Game {
 			setMoveplayer(0);
 		}
 
-		// Move the computer player
-		if (( ball.isMovingLeft() && ball.getArea().x < SizeX / 2 + getLevel() * SizeX / 10 ) ||
-				( !ball.isMovingLeft() && ball.getArea().x > SizeX / + getLevel() * SizeX / 10 )) {
-			if (ball.getArea().y > comp.getArea().y + 15) {
+		// Move the computer player (left)
+		if (( ball.isMovingLeft() &&
+				( 20 * ball.getArea().x < (5 + getLevel()) * SizeX ))) {
+			if (ball.getArea().y > comp.getArea().y + comp.getArea().height / 2) {
 				comp.makeMove(1);
-			} else if (ball.getArea().y < comp.getArea().y + 15) {
+			} else if (ball.getArea().y < comp.getArea().y + comp.getArea().height / 2) {
 				comp.makeMove(-1);
 			}
 		}

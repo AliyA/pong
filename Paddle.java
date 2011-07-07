@@ -28,8 +28,8 @@ public class Paddle {
 	 */
 	public Paddle(Game game, int across, int down) {
 		this.game = game;
-		this.area = new Rectangle(across, down, 10, 40);
-		this.nextArea = new Rectangle(across, down, 10, 40);
+		this.area = new Rectangle(across, down - 26, 10, 52);
+		this.nextArea = new Rectangle(across, down - 26, 10, 52);
 	}
 
 	/**
@@ -69,6 +69,6 @@ public class Paddle {
 
 	public void setPosition(int left, int down) {
 		area.x = left;
-		area.y = down;
+		area.y = down - area.height / 2;
 	}
 }

@@ -80,19 +80,19 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 		switch (event.getKeyCode()) {
 		// KeyEvent.VK_W
 		case 87:
-			game.setMoveplayer(-4);
+			game.setMoveplayer(-10);
 			break;
 		// KeyEvent.VK_S
 		case 83:
-			game.setMoveplayer(4);
+			game.setMoveplayer(10);
 			break;
 		// KeyEvent.VK_UP
 		case 38:
-			game.setMoveplayer(-4);
+			game.setMoveplayer(-10);
 			break;
 		// KeyEvent.VK_DOWN
 		case 40:
-			game.setMoveplayer(4);
+			game.setMoveplayer(10);
 			break;
 		}
 	}
@@ -162,7 +162,7 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int notches = e.getWheelRotation();
 
-		game.setMoveplayer(4 * notches);
+		game.setMoveplayer(6 * notches);
 	}
 
 	/**

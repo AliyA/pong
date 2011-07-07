@@ -15,6 +15,7 @@ public class Ball {
 	 * The area which this item occupies on the screen.
 	 */
 	private Rectangle area;
+	
 
 	/**
 	 * This variable is used as a temporary storage location for calculating the
@@ -44,7 +45,8 @@ public class Ball {
 		this.game = game;
 		area = new Rectangle(across, down, SIZE, SIZE);
 		nextArea = new Rectangle(across, down, SIZE, SIZE);
-		directionX = directionY = 1;
+		this.directionX = 1;
+		this.directionY = 1;
 	}
 
 	/**
@@ -92,11 +94,22 @@ public class Ball {
 		}
 	}
 
-	public void restart(int left, int down) {
+	public void restart(int left, int down, int directionY) {
 		area.x = left;
 		area.y = down;
 
-		directionX = directionY = 1;
+		directionX = 1;
+		
+		switch (directionY) {
+		case 0:
+			this.directionY = -1;
+			break;
+		case 1:
+			this.directionY = 1;
+			break;
+		default:
+			this.directionY = -1;
+		}
 	}
 	
 	public boolean isMovingLeft () {
