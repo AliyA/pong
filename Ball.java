@@ -1,7 +1,7 @@
 import java.awt.Rectangle;
 
 /**
- * Die Ball Klasse
+ * Die Ball Klasse. In dieser Klasse wird das Verhalten des Balles definiert.
  * 
  * @Michael Kressibucher
  */
