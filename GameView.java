@@ -12,22 +12,20 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.JComponent;
 
 /**
- * A GameView is a graphical representation of a Game object. It renders the
- * contents of the game onto the screen so that the user can visualise the game,
- * its player, monsters, items and walls.
- * 
- * @author
+ * Das Gameview ist die grafische Darstellung des Game Objektes. Es gibt das Spiel auf
+ *  dem Bildschirm wieder. 
+ *
+ * @Olivier Favre
  */
 public class GameView extends JComponent implements MouseListener, KeyListener,
 		MouseWheelListener {
 	/**
-	 * This thread runs in the background repeatedly calling the repaint()
-	 * method so that the screen is continously redrawn to reflect the changing
-	 * state of the game.
+	 * Dieses Thread läuft dauernd im Hintergrund und ruft die Methode repaint () 
+	 * auf, damit das Spielfenster neu geladen wird und der Verlauf des Spieles sichtbar wird.
 	 */
 	private class AnimationThread extends Thread {
 		/**
-		 * Loop until the game stops, calling the repaint() method.
+		 * Schleife in welcher sich das Spiel bin zum Ende befindet.
 		 */
 		@Override
 		public void run() {
@@ -48,10 +46,10 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	private BallView ballView;
 
 	/**
-	 * Creates a GameView to view the given Game.
+	 * Erstellt eine GameView um das Spiel zu sehen.
 	 * 
 	 * @param game
-	 *            the Game to view.
+	 *            das zu sehende Spiel.
 	 */
 	public GameView(Game game) {
 		this.game = game;
@@ -98,7 +96,7 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	}
 
 	/**
-	 * When a key is pressed we want to move the paddles
+	 * Wenn eine Taste gedrückt wird wollen wir den Balken bewegen.
 	 */
 	@Override
 	public void keyReleased(KeyEvent event) {
@@ -123,8 +121,8 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	}
 
 	/**
-	 * When the mouse is clicked, this method sends the "start" message to the
-	 * game, if the game has not already been started.
+	 * Wenn mit der Maus geklickt wird, sendet diese Mathode das "start" signal an die Klasse Spiel.
+	 * Dies jedoch nur wenn das Spiel noch nicht gestartet ist.
 	 */
 	@Override
 	public void mouseClicked(MouseEvent event) {
@@ -149,7 +147,7 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	public void mouseExited(MouseEvent event) {
 	}
 
-	// We don't care about these events.
+	
 	@Override
 	public void mousePressed(MouseEvent event) {
 	}
@@ -166,10 +164,10 @@ public class GameView extends JComponent implements MouseListener, KeyListener,
 	}
 
 	/**
-	 * Renders the game onto the screen.
+	 * Gibt das Spiel auf dem Bildschirm wieder
 	 * 
 	 * @param g
-	 *            the graphics context in which to draw.
+	 *            Das Grafikumfeld in welches gezeichnet werden soll.
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
