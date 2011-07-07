@@ -2,10 +2,10 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 /**
- * A Game is a rectangular area containing a ball and two paddles (a Player and
- * a computer player). Only one instance of the Game class need be created in
- * order to play a game.
- * <p>
+ * Ein Punkt („Ball“) bewegt sich auf dem Bildschirm hin und her. Zwei Spieler steuert einen 
+ * senkrechten Strich („Balken“), welcher er nach oben und unten verschieben kann. Lässt man den
+ * „Ball“ am „Balken“ vorbei, erhält der Gegner einen Punkt.
+ * 
  * The game provides methods such as "start" which starts the game, and "tick"
  * which makes the game move forward in time one step. The game also has
  * attributes such as "bounds" which indicates the width and height of the game
@@ -18,17 +18,16 @@ import java.util.Random;
  * Game.State.WON, Game.State.LOST, Game.State.NEW_LEVEL. The current state of a
  * game can be discovered by calling the "getState" method.
  * 
- * @author
+ * @Michael Kressibucher
  */
 public class Game {
 	/**
-	 * This thread is responsible for repeatedly calling the tick method in a
-	 * loop.
+	 * Dieses Thread ruft im Hintergrund mittels einer Schleife andauernd die Tick Methode auf.
 	 */
 	private class PlayThread extends Thread {
 		/**
-		 * Tick repeatedly at intervals of 10 milliseconds until the game is
-		 * over.
+		 * Tick welche sich im 10 millisekunden Takt wiederholt,
+		 * bis das Spiel zu Ende ist.
 		 */
 		@Override
 		public void run() {
@@ -43,9 +42,9 @@ public class Game {
 	}
 
 	/**
-	 * This is an "inner" class belonging to Game representing the states of a
-	 * game. There are 6 states: IDLE, PLAYING, WON, LOST, NEW_LEVEL, and
-	 * INVINCIBLE which are stored in 6 public static final attributes.
+	 * Dies ist eine innere Klasse (State) welche zu Game gehört und den Status des Spiels enthält
+	 * Es gibt 6 Statusse: IDLE (Leerlauf), PLAYING (Spielen), WON (gewonnen), LOST (verloren), 
+         * NEW_LEVEL (neues Level),INVINCIBLE (unsichtbar). Diese werden in statischen Attributen festgehalten
 	 */
 	public static class State {
 		public static final State IDLE = new State();
@@ -60,51 +59,48 @@ public class Game {
 	}
 
 	/**
-	 * The size of the game
+	 * Die Grösse des Spiels
 	 */
 	private final int SIZE = 500;
 	private final int SizeX = this.SIZE;
 	private final int SizeY = 2 * this.SIZE / 3;
 
 	/**
-	 * The level the player is on
+	 * Das Level in welches sich der Spieler befindet.
 	 */
 	private int level = 1;
 
 	/**
-	 * The size of the game area in pixels.
+	 * Die Grösse des Spiels in Pixels.
 	 */
 	private Rectangle bounds;
 
 	/**
-	 * The current state of the game.
+	 * Der momentane Status des Spieles.
 	 */
 	private Game.State state;
 
 	/**
-	 * The ball
+	 * Der Ball.
 	 */
 	private Ball ball;
 	private int ballY;
 
 	/**
-	 * The player and comp in the game.
+	 * Die Spielbalken des Spielers und des Computers.
 	 */
 	private Paddle player, comp;
 
-	//
-	// ACCESSOR METHODS
-	//
 
 	/**
-	 * Store values of the movement of the player / comp
+	 * Speichert die Bewegungen des Spielers/Computers.
 	 */
 	private int moveplayer;
 	
 	private Random random;
 
 	/**
-	 * Creates a new Game.
+	 * Erstellt ein neues Spiel.
 	 */
 	public Game() {
 		random = new Random();
@@ -122,47 +118,37 @@ public class Game {
 	}
 
 	/**
-	 * Returns the ball in this game.
+	 * Gibt den Ball zurück.
 	 * 
-	 * @return the ball in this game.
 	 */
 	public Ball getBall() {
 		return ball;
 	}
 
 	/**
-	 * Returns the size of this game in pixels.
-	 * 
-	 * @return the size of this game in pixels.
+	 * Gibt die Grösse des Spiels zurück.
 	 */
 	public Rectangle getBounds() {
 		return bounds;
 	}
 
 	/**
-	 * Returns the computer player in this game.
-	 * 
-	 * @return the computer player in this game.
+	 * Gibt den Computer Spielerbalken zurück.
 	 */
 	public Paddle getComp() {
 		return comp;
 	}
 
 	/**
-	 * Returns the current state of this game.
+	 * Gibt den aktuellen Status des Spiels zurück.
 	 * 
-	 * @return the current state of this game.
 	 */
 	public State getGameState() {
 		return this.state;
 	}
 
-	//
-	// OPERATIONS
-	//
-
 	/**
-	 * Returns the level that the player is on
+	 * Gibt die Levelhöhe zurück.
 	 * 
 	 * @return the level number the player is on
 	 */
@@ -171,18 +157,15 @@ public class Game {
 	}
 
 	/**
-	 * Returns the player in this game.
-	 * 
-	 * @return the player in this game.
+	 * Gibt den Spieler Spielbalken zurück.
 	 */
 	public Paddle getPlayer() {
 		return player;
 	}
 
 	/**
-	 * Returns true if the given area hits a paddle, or false otherwise.
-	 * 
-	 * @return true if the given area hits a paddle, or false otherwise.
+	 * Gibt den Wert true zurück wenn die angegebene Position einen Balken trifft.
+         * Wenn nicht, gibt es false zurück.
 	 */
 	public boolean hitsPaddle(Rectangle area) {
 		if (((area.x + Ball.SIZE == player.getArea().x)
@@ -198,17 +181,17 @@ public class Game {
 	}
 
 	/**
-	 * Puts the game into the Game.State.IDLE state
+	 * Setzt das Spiel in den Leerlauf Status
 	 */
 	public void idle() {
 		state = State.IDLE;
 	}
 
-	/**
-	 * Returns true if the given area is within the bounds of the game, or false
-	 * otherwise.
-	 * 
-	 * @return 1,2,3,4 in clockwise order starting on left
+
+         /**
+	 * Gibt den Wert true zurück wenn die angegebene Position sich im Rahmen des Spieles befindet.
+         * Wenn nicht, gibt es false zurück.
+         * @return 1,2,3,4 im Uhrzeigersinn. Startet links.
 	 */
 	public int isWithinBounds(Rectangle area) {
 		if (area.x < bounds.x)
@@ -223,38 +206,35 @@ public class Game {
 		return 0;
 	}
 
-	/**
-	 * Puts the game into the Game.State.LOST state. This method should be
-	 * called when the game is lost.
+         /**
+	 * Setzt das Spiel in den Verloren Status
 	 */
 	public void lose() {
 		state = State.LOST;
 	}
-
-	/**
-	 * Puts the game into the Game.State.NEW_LEVEL state
+        /**
+	 * Setzt das Spiel in den Neues Level Status
 	 */
 	public void newlevel() {
 		state = State.NEW_LEVEL;
 	}
 
 	/**
-	 * Sets the level
+	 * Setzt das Level
 	 */
 	public void setLevel(int levelnum) {
 		level = levelnum;
 	}
 
 	/**
-	 * Sets the direction in which the player is going to move
+	 *Setzt die Richtung in welcher sich der Spieler bewegen wird.
 	 */
 	public void setMoveplayer(int direction) {
 		moveplayer = direction;
 	}
 
 	/**
-	 * Starts the game. A separate thread will be started to repeatedly call the
-	 * tick() method in a loop.
+	 * Startet das Spiel. Ein seperater Thread (PlayThread) wird aufgerufen. 
 	 */
 	public synchronized void start() {
 		ball.restart(40, ballY, random.nextInt(2));
@@ -272,9 +252,8 @@ public class Game {
 	}
 
 	/**
-	 * Executes one tick of time in the game. In one tick, the player and each
-	 * monster should move one pixel. This method is called over and over again
-	 * by the game loop in the PlayThread.
+	 * Macht einen Tick im Spiel. In diesem Tick bewegen sich beide Spielerbalken um einen Pixel.
+	 * Diese Methode wird durch die Schleife in PlayThread andauernd aufgerufen
 	 */
 	public void tick() {
 		// Move player if instructed
@@ -296,10 +275,8 @@ public class Game {
 		// Move the ball
 		ball.makeMove();
 	}
-
-	/**
-	 * Puts the game into the Game.State.WON state. This method should be called
-	 * when the game is won.
+         /**
+	 * Setzt das Spiel in den Gewonnen Status
 	 */
 	public void win() {
 		state = State.WON;
