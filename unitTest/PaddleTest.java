@@ -13,6 +13,14 @@ import org.junit.Test;
  */
 public class PaddleTest {
 
+/**
+ *  Dieser Test testet die Methode setLocation, mit welcher man das Paddle auf eine gewünschte Position des Festers     
+ *  setzten kann. Um das zu testen wird die Position des Paddle-Rechtecks mit der eines neuen Rechtecks verglichen.
+ *
+ */
+
+
+
 public void testSetLocation()
 	{
 		Game game2 = new Game();
@@ -21,6 +29,12 @@ public void testSetLocation()
 		assertEquals(new Rectangle(1,1,10,40), paddle3.getArea());
 	}
 
+/**
+ *  Dieser Test testet die Methode makeMove. Damit kann man das Paddle nach oben oder unten verschieben.
+ *  Getestet wird so, dass man das Paddle zuerst bewegt und dann mit einem neuen Rechteck abgleicht, ob sich das Paddle bewegt 
+ *  hat.
+ *
+ */
 public void testMakeMove()
 	{
 		Game game2 = new Game();
