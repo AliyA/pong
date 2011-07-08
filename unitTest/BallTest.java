@@ -33,7 +33,7 @@ public void testStartNew()
 		assertEquals(new Rectangle(200,200,10,10), ball1.getArea());
 	}
 
-public void test2()
+public void testMakeMove()
 	{
 		Game game1 = new Game();
 		Ball ball1 = new Ball(game1, 1, 1);
