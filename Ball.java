@@ -58,12 +58,8 @@ public class Ball {
 
 	/**
 	 * Fragt in welche Richtung der Ball gehen sollte und bewegt den Ball 1 Pixel in die richtige Richtung.
-	 * Wenn der Ball rechts an den Rand kommt, hat der Spieler verloren und das Spiel wird in den Game.State.WON
-         * gesetzt. Wenn der Ball links landet, gewinnt der Spieler und das Spiel wird in Game.State.LOST gesetzt.
-         * (Then, if
-	 * the ball has reached the right, the player loses and the game is moved
-	 * into the Game.State.WON state. If the ball has reached the left, the game
-	 * is moved into the Game.State.LOST state.)
+	 * Wenn der Ball rechts an den Rand kommt, hat der Spieler verloren und das Spiel wird in den Game.State.LOST
+          * gesetzt. Wenn der Ball links landet, gewinnt der Spieler und das Spiel wird in Game.State.WON gesetzt.
 	 */
 	public void makeMove() {
 		nextArea.x = area.x + directionX;
