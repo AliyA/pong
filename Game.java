@@ -6,17 +6,15 @@ import java.util.Random;
  * senkrechten Strich („Balken“), welcher er nach oben und unten verschieben kann. Lässt man den
  * „Ball“ am „Balken“ vorbei, erhält der Gegner einen Punkt.
  * 
- * The game provides methods such as "start" which starts the game, and "tick"
- * which makes the game move forward in time one step. The game also has
- * attributes such as "bounds" which indicates the width and height of the game
- * area in pixels.
- * <p>
- * When the game is started, it starts a loop in a background thread which
- * repeatedly calls the "tick" method until the game is over.
- * <p>
- * A game can be in one of 5 states: Game.State.IDLE, Game.State.PLAYING,
- * Game.State.WON, Game.State.LOST, Game.State.NEW_LEVEL. The current state of a
- * game can be discovered by calling the "getState" method.
+ * Die Klasse beinhaltet Methoden wie zum Beispiel start, welcher das Spiel startet, 
+ * oder Tick, welche das Spiel laufen lässt. Zusätzlich gibt es Attribute welche zum Beispiel 
+ * die Grösse des Spiels in Pixel definieren. 
+ * 
+ * Wenn das Spiel gestartet wird, ruft es einen Thread auf, welcher eine Schleife beinhaltet.
+ * Diese Schleife ruft andauernd die Methode Tick auf, bis das Spiel zu Ende ist.
+ * 
+ * Es gibt 6 Statusse in denen sich das Spiel befinden kann ; IDLE (Leerlauf), PLAYING (Spielen), 
+ * WON (gewonnen), LOST (verloren), NEW_LEVEL (neues Level),INVINCIBLE (unsichtbar).
  * 
  * @Michael Kressibucher
  */
@@ -44,7 +42,7 @@ public class Game {
 	/**
 	 * Dies ist eine innere Klasse (State) welche zu Game gehört und den Status des Spiels enthält
 	 * Es gibt 6 Statusse: IDLE (Leerlauf), PLAYING (Spielen), WON (gewonnen), LOST (verloren), 
-         * NEW_LEVEL (neues Level),INVINCIBLE (unsichtbar). Diese werden in statischen Attributen festgehalten
+          * NEW_LEVEL (neues Level),INVINCIBLE (unsichtbar). Diese werden in statischen Attributen festgehalten
 	 */
 	public static class State {
 		public static final State IDLE = new State();
