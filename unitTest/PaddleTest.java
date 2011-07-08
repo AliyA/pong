@@ -13,36 +13,20 @@ import org.junit.Test;
  */
 public class PaddleTest {
 
-	/**
-	 * Test method for {@link Paddle#Paddle(Game, int, int)}.
-	 */
-	@Test
-	public final void testPaddle() {
-		fail("Not yet implemented"); // TODO
+public void testSetLocation()
+	{
+		Game game2 = new Game();
+		Paddle paddle3 = new Paddle(game2, 0, 0);
+		paddle3.setPosition(1, 1);
+		assertEquals(new Rectangle(1,1,10,40), paddle3.getArea());
 	}
 
-	/**
-	 * Test method for {@link Paddle#getArea()}.
-	 */
-	@Test
-	public final void testGetArea() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link Paddle#makeMove(int)}.
-	 */
-	@Test
-	public final void testMakeMove() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link Paddle#setPosition(int, int)}.
-	 */
-	@Test
-	public final void testSetPosition() {
-		fail("Not yet implemented"); // TODO
+public void testMakeMove()
+	{
+		Game game2 = new Game();
+		Paddle paddle2 = new Paddle(game2, 1, 1);
+		paddle2.makeMove(1);
+		assertEquals(new Rectangle(1,2,10,40), paddle2.getArea());
 	}
 
 }
