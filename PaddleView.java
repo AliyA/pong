@@ -2,31 +2,31 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
- * A PaddleView is a graphical representation of a Paddle object.
+ * Die Paddleview Klasse visualisiert den Spielebalken.
  * 
- * @author
+ * @Olivier Favre
  */
 public class PaddleView {
 	/**
-	 * The paddle being viewed.
+	 * Der Spielbalken
 	 */
 	private Paddle paddle;
 
 	/**
-	 * Creates a PaddleView for the given paddle.
+	 * Erstellt eine Ansicht des Spielbalkens.
 	 * 
 	 * @param paddle
-	 *            the paddle to view.
+	 *            den Spielbalken den man sehen soll
 	 */
 	public PaddleView(Paddle paddle) {
 		this.paddle = paddle;
 	}
 
 	/**
-	 * Renders this paddle onto the screen.
+	 * Gibt diesen Spielbalken auf den Bildschirm wieder.
 	 * 
 	 * @param g
-	 *            the graphics context in which to draw.
+	 *            Die Grafische Umgebung des Spielbalkens.
 	 */
 	public void paint(Graphics g) {
 		Rectangle area = paddle.getArea();

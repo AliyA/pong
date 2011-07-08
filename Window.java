@@ -6,13 +6,13 @@ import javax.swing.JFrame;
 /**
  * Write a description of class Window here.
  * 
- * @author
+ * @Noortje de Haan
  */
 public class Window extends JFrame {
 	private Game game;
 
 	/**
-	 * Constructor for objects of class Window
+	 * Konstruktor der Klasse Window
 	 */
 	public Window() {
 		this.setTitle("Pong");

@@ -1,13 +1,13 @@
 import java.awt.Rectangle;
 
 /**
- * Insert description here
+ * Die Ball Klasse. In dieser Klasse wird das Verhalten des Balles definiert.
  * 
- * @author
+ * @Michael Kressibucher
  */
 public class Ball {
 	/**
-	 * The size of an item in pixels.
+	 * Die grösse des Balles in Pixel.
 	 */
 	public static final int SIZE = 10;
 
@@ -18,28 +18,27 @@ public class Ball {
 	
 
 	/**
-	 * This variable is used as a temporary storage location for calculating the
-	 * next area that the creature plans to move to.
+	 * Diese Variable wird temporär für das Berechnen der nächsten  Position des Balles genutzt.
 	 */
 	private Rectangle nextArea;
 
 	/**
-	 * The game
+	 * Die Variabel Game
 	 */
 	private Game game;
 
 	/**
-	 * The direction
+	 * Die Richtung
 	 */
 	private int directionX, directionY;
 
 	/**
-	 * Creates an item at the specified location.
+	 * Erstellt die Anfangsposition
 	 * 
 	 * @param col
-	 *            the column in which to place the Item.
+	 *            Die vertikale Position
 	 * @param row
-	 *            the row in which to place the Item.
+	 *            Die horizontale Position
 	 */
 	public Ball(Game game, int across, int down) {
 		this.game = game;
@@ -50,20 +49,21 @@ public class Ball {
 	}
 
 	/**
-	 * Returns the area that this item occupies.
+	 * Gibt die aktuelle Position des Balles wieder.
 	 * 
-	 * @return the area that this item occupies.
 	 */
 	public Rectangle getArea() {
 		return area;
 	}
 
 	/**
-	 * Asks the ball to make its move for the current tick of time. As a result,
-	 * this ball should move 1 step (1 pixel) in its current direction. Then, if
+	 * Fragt in welche Richtung der Ball gehen sollte und bewegt den Ball 1 Pixel in die richtige Richtung.
+	 * Wenn der Ball rechts an den Rand kommt, hat der Spieler verloren und das Spiel wird in den Game.State.WON
+         * gesetzt. Wenn der Ball links landet, gewinnt der Spieler und das Spiel wird in Game.State.LOST gesetzt.
+         * (Then, if
 	 * the ball has reached the right, the player loses and the game is moved
 	 * into the Game.State.WON state. If the ball has reached the left, the game
-	 * is moved into the Game.State.LOST state.
+	 * is moved into the Game.State.LOST state.)
 	 */
 	public void makeMove() {
 		nextArea.x = area.x + directionX;

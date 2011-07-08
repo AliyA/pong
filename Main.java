@@ -1,8 +1,8 @@
 /**
- * Write a description of class Main here.
+ * Diese Klasse startet das Spiel, bzw. stellt es in einem Fenster dar
+ * sodass der Spieler das Spiel visuell sieht und steuern kann.
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * @Noortje de Haan
  */
 public class Main {
 	public static void main(String[] args) {
