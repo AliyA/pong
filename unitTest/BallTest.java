@@ -6,25 +6,13 @@ import org.junit.Test;
 
 public class BallTest {
 
-	@Test
-	public final void testBall() {
-		fail("Not yet implemented"); // TODO
-	}
 
-	@Test
-	public final void testGetArea() {
-		fail("Not yet implemented"); // TODO
-	}
+/**
+ *  In diesem Test wird die Ball Position manuell gesetzt und danach mit einem indentischen Rechteck überprüft.
+ *
+ */
 
-	@Test
-	public final void testMakeMove() {
-		fail("Not yet implemented"); // TODO
-	}
 
-	@Test
-	public final void testRestart() {
-		fail("Not yet implemented"); // TODO
-	}
 public void testStartNew()
 	{
 		Game game1 = new Game();
@@ -32,6 +20,12 @@ public void testStartNew()
 		ball1.restart(200, 200);
 		assertEquals(new Rectangle(200,200,10,10), ball1.getArea());
 	}
+
+/**
+ *  In diesem Test wird die Methode makeMove überprüft, in dem mehrmals makeMove() ausgefürt wird und danach die Position des 
+ * Balles mit einem Vergleichsball überprüft wird.
+ *
+ */
 
 public void testMakeMove()
 	{
